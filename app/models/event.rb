@@ -1,6 +1,6 @@
 #
 class Event < ActiveRecord::Base
-  belongs_to :user, inverse_of: :events, dependent: :destroy
-  has_many :items, inverse_of: :event
+  belongs_to :user, inverse_of: :events
+  has_many :items, inverse_of: :event, dependent: :destroy
   validates_presence_of :user_id, :name, :date, :location
 end
