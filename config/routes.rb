@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   patch '/change-password/:id' => 'users#changepw'
   get '/users/:id/events' => 'events#user_events'
   get '/users/:id/items' => 'items#user_items'
+  get '/events/search/:data' => 'events#search'
   resources :users, only: [:index, :show]
 end

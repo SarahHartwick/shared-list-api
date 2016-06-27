@@ -56,6 +56,18 @@ class EventsController < ApplicationController
     head :no_content
   end
 
+  # GET /events/:data
+  def search
+    @events = Event.select { |e|
+    if e.name.downcase.include? params[:data].downcase
+      e
+    elsif e.id == params[:data].to_i
+      e
+    end  }
+
+    render json: @events
+  end
+
   private
 
   def set_event
