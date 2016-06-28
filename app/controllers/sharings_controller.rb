@@ -24,13 +24,7 @@ class SharingsController < ApplicationController
   end
 
   def my_events
-    @sharings = Sharing.select { |s|
-      if s.profile_id == params[:id].to_i
-      s
-      elsif s.event.user_id == params[:user_id].to_i
-      s
-      end
-    }
+    @sharings = Sharing.select { |s| s if s.profile_id == params[:id].to_i }
 
     render json: @sharings
   end
@@ -50,6 +44,6 @@ class SharingsController < ApplicationController
   private
 
   def sharing_params
-    params.require(:sharing).permit(:profile_id, :event_id)
+    params.require(:sharing).permit(:profile_id, :event_id, :event, :profile)
   end
 end
