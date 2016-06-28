@@ -57,6 +57,7 @@ class UsersController < ProtectedController
     head :bad_request
   end
 
+
   private
 
   def user_creds
